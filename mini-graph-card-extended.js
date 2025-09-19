@@ -1,7 +1,7 @@
 class MiniGraphCardExtended extends HTMLElement {
   setConfig(config) {
     if (!config.entity_primary || !config.entities) {
-      throw new Error("'entity_primary' et 'entities' keys are missing");
+      throw new Error("'entity_primary' and 'entities' keys are missing");
     }
     this.config = config;
     this.attachShadow({ mode: "open" });
@@ -49,10 +49,9 @@ class MiniGraphCardExtended extends HTMLElement {
 
       <style>
         ha-card {
-          padding: 8px;
+          padding: 0;
           font-family: var(--paper-font-body1_-_font-family, inherit);
-          border-radius: var(--ha-card-border-radius, 12px);
-          box-shadow: var(--ha-card-box-shadow, 0 2px 4px rgba(0,0,0,0.1));
+          border: none;
           background: var(--card-background-color, white);
         }
 
@@ -116,7 +115,7 @@ class MiniGraphCardExtended extends HTMLElement {
 
     const entitiesClean = (this.config.entities || []).map(e => {
       if (e.entity === this.config.entity_primary) {
-        return { ...e, show_state: false }; 
+        return { ...e, show_state: false };
       }
       if (this.config.entity_secondary && e.entity === this.config.entity_secondary) {
         return { ...e, show_state: false };
@@ -128,7 +127,7 @@ class MiniGraphCardExtended extends HTMLElement {
     graphCard.setConfig({
       ...this.config,
       entities: entitiesClean,
-      show: { ...(this.config.show || {}), name: false, icon: false, state: false }
+      show: { ...(this.config.show || {}), name: false, icon: false, state: false, group: true }
     });
     this.shadowRoot.querySelector(".graph").appendChild(graphCard);
     graphCard.hass = hass;
