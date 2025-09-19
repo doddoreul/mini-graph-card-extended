@@ -1,5 +1,7 @@
 # Mini Graph Card Extended
 
+![preview](https://github.com/doddoreul/mini-graph-card-extended/blob/main/preview.png?raw=true)
+
 A **Home Assistant Lovelace custom card** that extends [mini-graph-card](https://github.com/kalkih/mini-graph-card) to display:
 
 - A **primary entity** (e.g., temperature) in large text
